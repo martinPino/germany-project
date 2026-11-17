@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 250 248 245;
+  --fg: 45 49 46;
+  --sage: 107 142 120;
+  --sagetext: 62 92 74;
+  --sagedeep: 47 72 58;
+  --terra: 212 140 112;
+  --card: 255 255 255;
+  --muted: 92 98 94;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 24 27 25;
+    --fg: 236 233 227;
+    --sage: 107 142 120;
+    --sagetext: 150 188 163;
+    --sagedeep: 20 30 24;
+    --card: 34 38 36;
+    --muted: 176 181 175;
+    color-scheme: dark;
+  }
+}
+
+html { scroll-behavior: smooth; }
+body {
+  @apply bg-cream font-sans text-ink antialiased;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+:focus-visible { outline: 3px solid rgb(var(--sagetext)); outline-offset: 3px; border-radius: 4px; }
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition duration-200 hover:-translate-y-0.5; }
+  .btn-terra { @apply bg-terra text-[#2D312E] hover:brightness-95; }
+  .btn-outline { @apply border-2 border-sagetext text-sagetext hover:bg-sagetext/10; }
+  .btn-deep { @apply bg-sagedeep text-white border border-white/10; }
+  .section { @apply mx-auto max-w-6xl scroll-mt-24 px-5 py-16 sm:px-8 md:py-24; }
+  .h2 { @apply font-display text-3xl font-semibold leading-tight sm:text-4xl; }
+  .card { @apply rounded-3xl border border-sage/25 bg-card p-6 shadow-sm; }
+  .input { @apply w-full rounded-xl border border-sage/50 bg-card px-4 py-3 text-ink; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .btn { transform: none !important; }
+}
